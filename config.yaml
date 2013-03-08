@@ -1,3 +1,6 @@
 handle:
-- directoryindex:  /index.php 
+# - directoryindex:  /assets/app/index.php 
+# - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+
+- directoryindex:  /assets/dist/index.php 
 - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
