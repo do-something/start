@@ -1,0 +1,3 @@
+[submodule "assets/app/thinkphp"]
+	path = assets/app/thinkphp
+	url = git@github.com:taballa/thinkphp.git
