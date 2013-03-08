@@ -32,8 +32,7 @@ module.exports = function( grunt ) {
       dist: {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
-          /*css_dir: 'temp/styles',*/
-          css_dir: 'app/styles',
+          css_dir: 'temp/styles',
           sass_dir: 'app/styles',
           images_dir: 'app/images',
           javascripts_dir: 'temp/scripts',
@@ -114,6 +113,7 @@ module.exports = function( grunt ) {
     // final build output
     /*output: 'dist',*/
     output: '2',
+
 
     mkdirs: {
       staging: 'app/'
