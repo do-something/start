@@ -12,10 +12,7 @@ module.exports = function( grunt ) {
 
     // specify an alternate install location for Bower
     bower: {
-      // dir: 'app/components'
-      // |
-      // V
-      dir: 'app/scripts/vender'
+      dir: 'app/components'
     },
 
     // Coffee to JS compilation
@@ -114,9 +111,7 @@ module.exports = function( grunt ) {
     // the staging directory used during the process
     staging: 'temp',
     // final build output
-    /*output: 'dist',*/
-    output: '2',
-
+    output: 'dist',
 
     mkdirs: {
       staging: 'app/'

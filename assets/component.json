@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "modernizr": "~2.6.1",
-    "jquery.colorbox": "~1.4.1"
+    "jquery.colorbox": "~1.4.1",
+    "jquery-ui": "null"
   }
 }
