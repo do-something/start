@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass']
+                tasks: ['compass:watch']
             },
             livereload: {
                 files: [
@@ -135,8 +135,7 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
-                // cssDir: '.tmp/styles',
-                cssDir: '<%= yeoman.app %>/styles',
+                cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
@@ -144,6 +143,11 @@ module.exports = function (grunt) {
                 relativeAssets: true
             },
             dist: {},
+            watch: {
+                options: {
+                    cssDir: '<%= yeoman.app %>/styles',
+                }
+            },
             server: {
                 options: {
                     debugInfo: true
