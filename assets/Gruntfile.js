@@ -180,7 +180,7 @@ module.exports = function (grunt) {
             }
         },
         usemin: {
-            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            html: ['<%= yeoman.dist %>/{,*/}*.html', '<%= yeoman.dist %>/thinkphp/Tpl/{,**/}*.html'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
                 dirs: ['<%= yeoman.dist %>']
@@ -236,7 +236,10 @@ module.exports = function (grunt) {
                     dest: '<%= yeoman.dist %>',
                     src: [
                         '*.{ico,txt}',
-                        '.htaccess'
+                        '.htaccess',
+                        'index.php',
+                        'thinkphp/{,**/}*.{php,tpl,html}',
+                        'core/**'
                     ]
                 }]
             }
