@@ -1,4 +1,6 @@
-temp
+node_modules
 dist
+.tmp
+.sass-cache
+app/components
 2
-components
