@@ -240,9 +240,8 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
-                        '*.{ico,txt}',
+                        '*.{ico,txt,yaml,php}',
                         '.htaccess',
-                        'index.php',
                         'thinkphp/{,**/}*.{php,tpl,html}',
                         'core/**'
                     ]
