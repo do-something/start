@@ -6793,7 +6793,12 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
   box-sizing: border-box;
 }
 
-/* line 4, main.scss */
+/* line 1, do-something/_coconote.scss */
+#note {
+  width: 100%;
+}
+
+/* line 6, main.scss */
 .hero-unit {
   margin: 50px auto 0 auto;
   width: 300px;

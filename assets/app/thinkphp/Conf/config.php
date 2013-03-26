@@ -11,7 +11,7 @@ return array(
     'URL_HTML_SUFFIX'=>false,  // 伪静态后缀
     'URL_ROUTER_ON'=>true,
     'URL_ROUTER_RULES'=>array(
-        'home' => 'Index/index'
+        '/^home/(.*)/' => 'Index/:1'
     ),
     'URL_MODULE_MAP'=>array(
         // 'index'=>'home'
