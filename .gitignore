@@ -1,1 +1,10 @@
 .sass-cache
+.tags
+.tags_sorted_by_file
+.svn
+components
+node_modules
+2
+temp
+.tmp
+runtime
