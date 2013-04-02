@@ -198,7 +198,8 @@ module.exports = function (grunt) {
         },
         useminPrepare: {
             html: [
-                '<%= yeoman.app %>/index.html'
+                '<%= yeoman.app %>/index.html',
+                '<%= yeoman.app %>/app/thinkphp/Tpl/Jquery/footer.html'
             ],
             options: {
                 dest: '<%= yeoman.dist %>'
