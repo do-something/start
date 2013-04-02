@@ -1,1 +1,5 @@
-console.log "'Allo from CoffeeScript!"
+console.log 'Allo from CoffeeScript!'
+console.log 'Allo from CoffeeScript!'
+console.log 'Allo from CoffeeScript!'
+console.log 'Allo from CoffeeScript!'
+console.log 'Allo from CoffeeScript!'

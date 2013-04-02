@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         watch: {
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
+                tasks: ['coffee:watch']
             },
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
@@ -123,6 +123,17 @@ module.exports = function (grunt) {
                     ext: '.js'
                 }]
             },
+            watch: {
+                files: [{
+                    // rather than compiling multiple files here you should
+                    // require them into your main .coffee file
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/scripts',
+                    src: '*.coffee',
+                    dest: '<%= yeoman.app %>/scripts',
+                    ext: '.js'
+                }]
+            },
             test: {
                 files: [{
                     expand: true,
@@ -168,18 +179,27 @@ module.exports = function (grunt) {
                     optimize: 'none',
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
+                    // generateSourceMaps: true,
                     // required to support SourceMaps
                     // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
                     useStrict: true,
                     wrap: true,
+                    // dir: '<%= yeoman.dist %>/scripts',
+                    // modules: [
+                    //     // {name: 'pages/HomeMain'},
+                    //     // {name: 'pages/AdminMain'},
+                    //     {name: 'main'},
+                    //     {name: 'sjm'}
+                    // ],
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
         },
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: [
+                '<%= yeoman.app %>/index.html'
+            ],
             options: {
                 dest: '<%= yeoman.dist %>'
             }
@@ -250,7 +270,9 @@ module.exports = function (grunt) {
         },
         bower: {
             all: {
-                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
+                rjsConfig: [
+                    '<%= yeoman.app %>/scripts/main.js'
+                ]
             }
         }
     });
