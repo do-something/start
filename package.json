@@ -1,6 +1,6 @@
 {
-  "name": "assets",
-  "version": "0.0.0",
+  "name": "do-somethin",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.0",
@@ -15,12 +15,10 @@
     "grunt-contrib-clean": "0.4.0",
     "grunt-contrib-htmlmin": "0.1.1",
     "grunt-contrib-imagemin": "0.1.2",
-    "grunt-contrib-livereload": "0.1.1",
     "grunt-bower-hooks": "~0.2.0",
     "grunt-usemin": "~0.1.9",
     "grunt-regarde": "~0.1.1",
     "grunt-requirejs": "~0.3.2",
-    "grunt-mocha": "~0.2.2",
     "grunt-open": "~0.2.0",
     "matchdep": "~0.1.1"
   },
