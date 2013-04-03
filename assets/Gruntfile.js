@@ -186,9 +186,8 @@ module.exports = function (grunt) {
                     useStrict: true,
                     wrap: true,
                     // dir: '<%= yeoman.dist %>/scripts',
+                    // mainConfigFile: '<%= yeoman.app %>/scripts/main.js',
                     // modules: [
-                    //     // {name: 'pages/HomeMain'},
-                    //     // {name: 'pages/AdminMain'},
                     //     {name: 'main'},
                     //     {name: 'sjm'}
                     // ],
@@ -198,8 +197,8 @@ module.exports = function (grunt) {
         },
         useminPrepare: {
             html: [
-                '<%= yeoman.app %>/index.html',
-                '<%= yeoman.app %>/app/thinkphp/Tpl/Jquery/footer.html'
+            '<%= yeoman.app %>/index.html',
+            // '<%= yeoman.app %>/thinkphp/Tpl/Jquery/footer.html'
             ],
             options: {
                 dest: '<%= yeoman.dist %>'
