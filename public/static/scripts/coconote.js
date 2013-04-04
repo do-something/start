@@ -1,6 +1,6 @@
 (function() {
   var a;
 
-  a = 22;
+  a = 2222 + 'xxx';
 
 }).call(this);

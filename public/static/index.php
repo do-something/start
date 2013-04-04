@@ -1,14 +1,12 @@
 <?php 
 define('APP_DEBUG', true); // 开启调试模式
-// define('APP_NAME','thinkphp');
-
-// <!-- build:js ./ -->
-define('ROOT_PATH', '../../');
-// <!-- endbuild -->
-define('__STATIC__', ROOT_PATH.'public/static');
-define('__DIST__', ROOT_PATH.'public/dist');
-define('__ROOT_PATH__', ROOT_PATH);
-
+// define('APP_NAME','static');
+// define('APP_NAME','dist');
+if ('static' == basename(dirname(__FILE__))) {
+    define('ROOT_PATH', '../../');
+}else{
+    define('ROOT_PATH', './');
+}
 define('APP_PATH', ROOT_PATH.'app/');
 
 define('THINK_CORE', ROOT_PATH.'thinkphp/core/');

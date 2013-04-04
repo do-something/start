@@ -24,6 +24,7 @@ require.config({
     }
 });
 
+
 require(['app', 'jquery', 'underscore', 'backbone', 'math', 'bootstrap', 'coconote', 'hello'], function (app, $, _, Backbone, math) {
     'use strict';
     // use app here
