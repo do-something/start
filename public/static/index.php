@@ -9,7 +9,7 @@ define('__STATIC__', ROOT_PATH.'public/static');
 define('__DIST__', ROOT_PATH.'public/dist');
 define('__ROOT_PATH__', ROOT_PATH);
 
-define('APP_PATH', ROOT_PATH.'thinkphp/app/');
+define('APP_PATH', ROOT_PATH.'app/');
 
 define('THINK_CORE', ROOT_PATH.'thinkphp/core/');
 
