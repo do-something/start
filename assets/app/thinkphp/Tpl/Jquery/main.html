@@ -1,0 +1,17 @@
+<block name='header'>
+    <include file="Public:header" />
+</block>
+<div class="container">
+    <block name="menu">
+       <include file='Public:menu' />
+    </block>
+    <div class="row-fluid">
+        <div class="span3">
+            <include file='jquery:sidebar' />
+        </div>
+        <div class="span9"><block name="chapter"></block></div>
+    </div>
+</div>
+<block name="footer">
+    <include file="Jquery:footer" />
+</block>

@@ -1,7 +1,16 @@
 <extend name="Public:main" />
 <block name="content">
     <div class="row-fluid">
-        <div class="span3">span3</div>
-        <div class="span9">span9</div>
+        <div class="span10 offset1">
+            <p>{$note}</p>
+            <form action="{:U('coconote/save')}" method="post">
+                <textarea  name="note" id="note" cols="30" rows="10"></textarea>
+                <div class="controls">
+                    <input type="button" value="修改" name='change' class='btn btn-primary'>
+                    <input type="button" value="放弃修改" name='cancel' class='btn btn-warning'>
+                    <input type="submit" value="保存修改" name='submit' class='btn btn-success'>
+                </div>
+            </form>
+        </div>
     </div>
 </block>

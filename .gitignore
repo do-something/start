@@ -1,5 +1,10 @@
-temp
-Runtime
-.svn
+.sass-cache
 .tags
 .tags_sorted_by_file
+.svn
+.tmp
+
+components
+node_modules
+runtime
+2
