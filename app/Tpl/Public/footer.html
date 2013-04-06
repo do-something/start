@@ -8,12 +8,22 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 
-        <!-- build:js scripts/main.js -->
-        <script data-main="__APP__/scripts/main" src="__APP__/components/requirejs/require.js"></script>
+        <!-- build:js __APP__/scripts/main.js -->
+        <script src="__APP__/components/requirejs/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: "__APP__/scripts"
+            })
+        </script>
+        <script src="__APP__/scripts/config.js"></script>
+        <script src="__APP__/scripts/main.js"></script>
         <!-- endbuild -->
 
+
         <!--[if lte IE 6]>
-            <script type="text/javascript" src="__APP__/scripts/vendor/bootstrap-ie.js"></script>
+            <script>
+                require(['bootstrapIe'], function(){});
+            </script>
         <![endif]-->
 
 </body>

@@ -99,7 +99,6 @@ module.exports = function(grunt) {
                     findNestedDependencies: true,
                     fileExclusionRegExp: /^\./,
                     inlineText: true,
-                    removeCombined: true,
                     uglify2: {
                         // //Example of a specialized config. If you are fine
                         // //with the default options, no need to specify
@@ -186,8 +185,8 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 files: {
-                    '<%= meta.distDir %>/scripts/vendor/modernizr.js': ['<%= meta.staticDir %>/components/modernizr/modernizr.js'],
-                    '<%= meta.distDir %>/scripts/vendor/require.js': ['<%= meta.staticDir %>/components/requirejs/require.js']
+                    '<%= meta.distDir %>/scripts/main.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/main.js'],
+                    '<%= meta.distDir %>/scripts/sjm.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/sjm.js']
                 }
             }
         },
@@ -198,8 +197,10 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= meta.distDir %>/scripts/vendor/modernizr.js': ['<%= meta.tmpDir %>/scripts/vendor/modernizr.js'],
-                    '<%= meta.distDir %>/scripts/vendor/require.js': ['meta.tmpDir %>/scripts/vendor/require.js']
+                    '<%= meta.distDir %>/scripts/vendor/jquery.js': ['<%= meta.staticDir %>/components/jquery/jquery.js'],
+                    '<%= meta.distDir %>/scripts/vendor/modernizr.js': ['<%= meta.staticDir %>/components/modernizr/modernizr.js'],
+                    '<%= meta.distDir %>/scripts/vendor/bootstrap-ie.js': ['<%= meta.staticDir %>/scripts/vendor/bootstrap-ie.js'],
+                    '<%= meta.tmpDir %>/scripts/vendor/require.js': ['<%= meta.staticDir %>/components/requirejs/require.js'],
                 }
             }
         },

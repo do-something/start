@@ -9,11 +9,21 @@
         </script>
 
         <!-- build:js __APP__/scripts/sjm.js -->
-        <script data-main="__APP__/scripts/sjm" src="__APP__/components/requirejs/require.js"></script>
+        <script src="__APP__/components/requirejs/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: "__APP__/scripts"
+            })
+        </script>
+        <script src="__APP__/scripts/config.js"></script>
+        <script src="__APP__/scripts/sjm.js"></script>
         <!-- endbuild -->
 
+
         <!--[if lte IE 6]>
-            <script type="text/javascript" src="__APP__/scripts/vendor/bootstrap-ie.js"></script>
+            <script>
+                require(['bootstrapIe'], function(){});
+            </script>
         <![endif]-->
 
 </body>

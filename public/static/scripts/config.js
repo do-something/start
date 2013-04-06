@@ -3,7 +3,8 @@ require.config({
         underscore: '../components/underscore/underscore',
         backbone: '../components/backbone/backbone',
         jquery: '../components/jquery/jquery',
-        bootstrap: 'vendor/bootstrap'
+        bootstrap: 'vendor/bootstrap',
+        bootstrapIe: 'vendor/bootstrap-ie'
     },
     shim: {
         'underscore': {
@@ -20,6 +21,10 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        bootstrapIe: {
+            deps: ['jquery'],
+            exprots: 'jquery'
         }
     }
 });
