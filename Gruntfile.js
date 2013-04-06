@@ -147,7 +147,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     '<%= meta.distDir %>/styles/main.css': [
-                        '<%= meta.tmpDir %>/styles/{,*/}*.css']
+                        '<%= meta.staticDir %>/styles/{,*/}*.css']
                 }
             }
         },
