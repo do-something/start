@@ -4,21 +4,26 @@
         <h2>
             Chapter: {$number}
         </H2>
-        <h3>
-            1. 选择器
-        </h3>
-        <h6>
-            h6
+        <ol>
+            <li>
+                选择器
+            </li>
+            <h6>
+                h6
+                <code>
+                    $('h6').css('font-size', '22px')
+                </code>
+            </h6>
+            <li>
+                click event
+            </li>
             <code>
-                $('h6').css('font-size', '22px')
+                $('#hide-sidebar').click(function() { return $('#sidebar').toggle(); });
             </code>
-        </h6>
-        <code>
-            $('#hide-sidebar').click(function() { return $('#sidebar').toggle(); });
-        </code>
-        <div>
-            <input type="button" value="hide sidebar" id="hide-sidebar" class='btn'
-            />
-        </div>
+            <div class='controls'>
+                <input type="button" value="hide sidebar" id="hide-sidebar" class='btn'
+                />
+            </div>
+        </ol>
     </div>
 </block>
