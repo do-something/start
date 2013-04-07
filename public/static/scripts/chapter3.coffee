@@ -5,3 +5,6 @@ define ['jquery', 'bootstrap'], ($)->
         $('#sidebar').toggle()
     $('#html').html('$("#html").html(<a href="#">a</a>)')
     $('#text').text('$("#text").text(<a href="#">a</a>)')
+    $('#class').click (e)->
+        $(this).toggleClass('icon-music')
+    a = 22

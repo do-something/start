@@ -146,8 +146,7 @@ module.exports = function(grunt) {
         cssmin: {
             dist: {
                 files: {
-                    '<%= meta.distDir %>/styles/main.css': [
-                        '<%= meta.staticDir %>/styles/{,*/}*.css']
+                    '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
                 }
             }
         },

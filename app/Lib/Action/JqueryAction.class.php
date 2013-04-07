@@ -9,4 +9,8 @@ class JqueryAction extends Action{
         $this->assign('number', $number);
         $this->display("Jquery:chapter-$number");
     }
+
+    public function release(){
+        $this->display();
+    }
 }

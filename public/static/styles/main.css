@@ -6798,7 +6798,22 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
   width: 100%;
 }
 
-/* line 6, main.scss */
+/* line 1, do-something/_jquery.sass */
+#describe {
+  width: 100%;
+}
+
+/* line 3, do-something/_jquery.sass */
+#code {
+  width: 100%;
+}
+
+/* line 5, do-something/_jquery.sass */
+#comments {
+  width: 100%;
+}
+
+/* line 7, main.scss */
 .hero-unit {
   margin: 50px auto 0 auto;
   width: 300px;

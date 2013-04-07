@@ -9,7 +9,13 @@
             <li><a href="{:U('sae/index')}">sae</a></li>
             <li><a href="{:U('index/dump')}">dump</a></li>
             <li><a href="{:U('index/redirect')}">redirect</a></li>
-            <li><a href="{:U('jquery/index')}">jQuery</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">jQuery <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{:U('jquery/index')}">home</a></li>
+                    <li><a href="{:U('jquery/release')}">release</a></li>
+                </ul>
+            </li>
         </ul>
         <form class="navbar-form pull-right">
             <input type="text" class="span2">

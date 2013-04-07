@@ -1,5 +1,5 @@
 <extend name="Jquery:main" />
-<block name="chapter">
+<block name="content">
     <div>
         <h2>
             Chapter: {$number}
@@ -31,7 +31,15 @@
                 $("#html").html(<a href="#">a</a>)
             </code>
             <p id='html'></p>
+            <code>
+                $("#text").text(&lt;a href="#"&gt;a&lt;/a&gt;)
+            </code>
             <p id='text'></p>
+            <li>toggleClass</li>
+            <code>
+                $(#class).click().toggleClass('icon-music')
+            </code>
+            <p id="class">icon-music</p>
         </ol>
     </div>
 </block>
