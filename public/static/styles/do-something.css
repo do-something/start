@@ -1,0 +1,44 @@
+/* line 1, do-something/_coconote.sass */
+#note {
+  width: 100%;
+}
+
+/* line 8, do-something/_jquery.sass */
+#describe {
+  width: 80%;
+  padding-top: 35px;
+  margin-bottom: 10px;
+}
+
+/* line 10, do-something/_jquery.sass */
+#code {
+  width: 80%;
+  padding-top: 35px;
+  margin-bottom: 10px;
+}
+
+/* line 12, do-something/_jquery.sass */
+#comment {
+  width: 80%;
+  padding-top: 35px;
+  margin-bottom: 10px;
+}
+
+/* line 14, do-something/_jquery.sass */
+.docs {
+  position: relative;
+}
+
+/* line 16, do-something/_jquery.sass */
+.docs .corner {
+  background-color: whitesmoke;
+  border: 1px solid #dddddd;
+  border-radius: 4px 0 4px 0;
+  color: #9da0a4;
+  font-size: 12px;
+  font-weight: bold;
+  left: 1px;
+  padding: 3px 17px;
+  position: absolute;
+  top: 1px;
+}

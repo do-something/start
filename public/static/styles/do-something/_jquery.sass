@@ -1,6 +1,26 @@
+$textarea-width: 80%
+
+@mixin textarea
+    width: $textarea-width
+    padding-top: 35px
+    margin-bottom: 10px
+
 #describe
-    width: 100%
+    @include textarea
 #code
-    width: 100%
-#comments
-    width: 100%
+    @include textarea
+#comment
+    @include textarea
+.docs
+    position: relative
+.docs .corner
+    background-color: #F5F5F5
+    border: 1px solid #DDDDDD
+    border-radius: 4px 0 4px 0
+    color: #9DA0A4
+    font-size: 12px
+    font-weight: bold
+    left: 1px
+    padding: 3px 17px
+    position: absolute
+    top: 1px
