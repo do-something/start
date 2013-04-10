@@ -15,7 +15,7 @@ class JqueryAction extends Action{
     }
 
     public function release(){
-        $jquerydb = M('jquery');
+        $jquerydb = D('jquery');
         // $data = $_POST;
         if ($jquerydb->create()){
             $result = $jquerydb->add();
