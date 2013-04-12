@@ -7,7 +7,7 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'chapter3', 'bootstrap'], function(app, $, chapter3) {
+require(['app', 'jquery', 'chapter3', 'bootstrap', 'verify'], function(app, $, chapter3, _bootstrap) {
     'use strict';
     // use app here
     
@@ -15,7 +15,6 @@ require(['app', 'jquery', 'chapter3', 'bootstrap'], function(app, $, chapter3) {
     // console.log('Running jQuery %s', $().jquery);
 
     // console.log(chapter3);
-
 
 
 });

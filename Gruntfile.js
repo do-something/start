@@ -33,17 +33,6 @@ module.exports = function(grunt) {
             dist: ["<%= meta.distDir %>", "<%= meta.tmpDir %>"],
         },
         coffee: {
-            dist: {
-                files: [{
-                    // rather than compiling multiple files here you should
-                    // require them into your main .coffee file
-                    expand: true,
-                    cwd: '<%= meta.staticDir %>/scripts',
-                    src: '*.coffee',
-                    dest: '<%= meta.tmpDir %>/scripts',
-                    ext: '.js'
-                }]
-            },
             watch: {
                 files: [{
                     // rather than compiling multiple files here you should
@@ -52,6 +41,17 @@ module.exports = function(grunt) {
                     cwd: '<%= meta.staticDir %>/scripts',
                     src: '*.coffee',
                     dest: '<%= meta.staticDir %>/scripts',
+                    ext: '.js'
+                }]
+            },
+            dist: {
+                files: [{
+                    // rather than compiling multiple files here you should
+                    // require them into your main .coffee file
+                    expand: true,
+                    cwd: '<%= meta.staticDir %>/scripts',
+                    src: '*.coffee',
+                    dest: '<%= meta.tmpDir %>/scripts',
                     ext: '.js'
                 }]
             },
@@ -74,12 +74,12 @@ module.exports = function(grunt) {
                 importPath: '<%= meta.staticDir %>/components',
                 relativeAssets: true
             },
-            dist: {},
             watch: {
                 options: {
                     cssDir: '<%= meta.staticDir %>/styles',
                 }
-            }
+            },
+            dist: {}
         },
         requirejs: {
             dist: {
@@ -187,6 +187,25 @@ module.exports = function(grunt) {
                     '<%= meta.distDir %>/scripts/main.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/main.js'],
                     '<%= meta.distDir %>/scripts/sjm.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/sjm.js']
                 }
+            },
+            prepare: {
+                files: {
+                    '<%= meta.staticDir %>/scripts/vendor/bootstrap.js': [
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-affix.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-alert.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-dropdown.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-tooltip.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-modal.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-transition.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-button.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-popover.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-typeahead.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-carousel.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-scrollspy.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-collapse.js',
+                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-tab.js'  
+                    ]
+                }
             }
         },
         uglify: {
@@ -220,7 +239,8 @@ module.exports = function(grunt) {
                     src: [
                         'app/**',
                         'thinkphp/core/ThinkPHP/**',
-                        'thinkphp/core/thinkphp-extend/Extend/Engine/**']
+                        'thinkphp/core/thinkphp-extend/Extend/Engine/**',
+                        'thinkphp/core/thinkphp-extend/Extend/Library/ORG/**']
                 }]
             }
         }
@@ -230,13 +250,14 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'concat:prepare',
         'coffee',
         'compass',
         // 'useminPrepare',
         'requirejs',
         'imagemin',
         'htmlmin',
-        'concat',
+        'concat:dist',
         'cssmin',
         'uglify',
         'copy',
@@ -246,4 +267,8 @@ module.exports = function(grunt) {
         'jshint',
         'build']);
 
+    grunt.registerTask('prepare', [
+        'concat:prepare',
+        'coffee:watch',
+        'compass:watch']);
 };

@@ -26,4 +26,9 @@ class IndexAction extends Action {
     public function redirect(){
         redirect(U('index/lala'), 1, '页面跳转中...');
     }
+
+    public function verify(){
+        import('ORG.Util.Image');
+        Image::buildImageVerify(4,1,"png",48,20);
+    }
 }

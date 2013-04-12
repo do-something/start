@@ -1,0 +1,24 @@
+<extend name="main-12" />
+<block name="content">
+    <h1>notebook</h1><a href="__URL__/edit">New Note</a>
+    <table class="table table-hover">
+        <caption>notebook</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Page</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td><a href="__ACTION__/{$vo.id}">{$vo.id}</a></td>
+                        <td>{$vo.page_number}</td>
+                        <td>{$vo.title}</td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</block>

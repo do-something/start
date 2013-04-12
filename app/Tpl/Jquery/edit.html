@@ -4,7 +4,7 @@
         <div class="control-group">
             <div class="input-prepend">
                 <span class="add-on">页码</span>
-                <input type="text" name="page-number" id="page-number" placeholder="" class="input-mini">
+                <input type="text" name="page_number" id="page_number" placeholder="" class="input-mini">
             </div>
             <div class="input-prepend">
                 <!-- <span class="add-on"><i class="icon-font"></i></span> -->
@@ -20,12 +20,14 @@
             <span class="corner">代码</span>
             <textarea name="code" id="code" cols="30" rows="10"></textarea>
         </div>
-        <div class="docs">
+        <div class="docs hide">
             <span class="corner">留言</span>
             <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         </div>
-        <div class="form-actions">
-            <input type="submit" value="提交" class="btn btn-success btn-large btn-block">
+        <div class="input-prepend input-append">
+            <span class="add-on"><img id="verifyImg" src='__APP__/index/verify/'/></span>
+            <input type="text" id="verify" name="verify" class="input-mini">
+            <button type="submit" value="提交" class="btn btn-success">验证并提交</button>
         </div>
     </form>
 </block>

@@ -19,8 +19,7 @@ require.config({
             exports: 'jQuery.fn.scroll'
         },
         bootstrap: {
-            deps: ['jquery'],
-            exports: 'jquery'
+            deps: ['jquery']
         },
         bootstrapIe: {
             deps: ['jquery'],
