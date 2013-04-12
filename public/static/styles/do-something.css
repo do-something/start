@@ -33,7 +33,6 @@
 .docs .corner {
   background-color: whitesmoke;
   border: 1px solid #dddddd;
-  border-radius: 4px 0 4px 0;
   color: #9da0a4;
   font-size: 12px;
   font-weight: bold;
@@ -43,12 +42,24 @@
   top: 1px;
 }
 
-/* line 5, do-something.scss */
+/* line 28, do-something/_jquery.sass */
+strong.title {
+  font-size: 36px;
+  line-height: 40px;
+  padding: 0 15px;
+}
+
+/* line 33, do-something/_jquery.sass */
+.new-note {
+  margin-bottom: 10px;
+}
+
+/* line 4, do-something.scss */
 .system-message {
   padding: 24px 48px;
 }
 
-/* line 6, do-something.scss */
+/* line 5, do-something.scss */
 .system-message h1 {
   font-size: 100px;
   font-weight: normal;
@@ -56,23 +67,23 @@
   margin-bottom: 12px;
 }
 
-/* line 7, do-something.scss */
+/* line 6, do-something.scss */
 .system-message .jump {
   padding-top: 10px;
 }
 
-/* line 8, do-something.scss */
+/* line 7, do-something.scss */
 .system-message .jump a {
   color: #333;
 }
 
-/* line 9, do-something.scss */
+/* line 8, do-something.scss */
 .system-message .success, .system-message .error {
   line-height: 1.8em;
   font-size: 36px;
 }
 
-/* line 10, do-something.scss */
+/* line 9, do-something.scss */
 .system-message .detail {
   font-size: 12px;
   line-height: 20px;

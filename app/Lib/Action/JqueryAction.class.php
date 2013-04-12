@@ -44,6 +44,8 @@ class JqueryAction extends Action{
             import('ORG.Util.Page');
             $count = $jquerydb->count();
             $page = new Page($count, 5);
+            $page->setConfig('header','条笔记');
+            $page->setConfig('theme', '%start% %totalPage% %upPage% %linkPage% %downPage% %close%');
             $show = $page->show();
             // $list = $jquerydb->select();
             $list = $jquerydb->order('page_number')->limit($page->firstRow.','.$page->listRows)->select();

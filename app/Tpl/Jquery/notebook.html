@@ -1,11 +1,10 @@
 <extend name="main-12" />
 <block name="content">
-    <h1>notebook</h1><a href="__URL__/edit">New Note</a>
+    <strong class="title">notebook</strong><a href="__URL__/edit" class="btn new-note">New Note</a>
     <table class="table table-hover">
-        <caption>notebook</caption>
+        <!-- <caption>caption : notebook</caption> -->
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Page</th>
                 <th>Title</th>
             </tr>
@@ -13,8 +12,7 @@
         <tbody>
             <volist name="list" id="vo">
                 <tr>
-                    <td><a href="__ACTION__/{$vo.id}">{$vo.id}</a></td>
-                        <td>{$vo.page_number}</td>
+                        <td>P <a href="__ACTION__/{$vo.id}">{$vo.page_number}</a></td>
                         <td>{$vo.title}</td>
                 </tr>
             </volist>
