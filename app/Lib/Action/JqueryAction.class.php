@@ -44,8 +44,9 @@ class JqueryAction extends Action{
             import('ORG.Util.Page');
             $count = $jquerydb->count();
             $page = new Page($count, 5);
-            $page->setConfig('header','条笔记');
-            $page->setConfig('theme', '%start% %totalPage% %upPage% %linkPage% %downPage% %close%');
+            $page->setConfig('prev','< 上一页');
+            $page->setConfig('next','下一页 >');
+            $page->setConfig('theme', '%upPage% %first% %prePage% %linkPage% %nextPage% %end% %downPage% ');
             $show = $page->show();
             // $list = $jquerydb->select();
             $list = $jquerydb->order('page_number')->limit($page->firstRow.','.$page->listRows)->select();
