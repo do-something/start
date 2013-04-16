@@ -66,7 +66,9 @@ module.exports = function(grunt) {
         },
         compass: {
             options: {
+                config: 'compass.rb',
                 sassDir: '<%= meta.staticDir %>/styles',
+                // sassDir: ['<%= meta.staticDir %>/styles', '<%= meta.staticDir %>/styles/vendor'],
                 cssDir: '<%= meta.tmpDir %>/styles',
                 imagesDir: '<%= meta.staticDir %>/images',
                 javascriptsDir: '<%= meta.staticDir %>/scripts',
@@ -76,10 +78,11 @@ module.exports = function(grunt) {
             },
             watch: {
                 options: {
-                    cssDir: '<%= meta.staticDir %>/styles',
+                    cssDir: '<%= meta.staticDir %>/styles'
                 }
             },
-            dist: {}
+            dist: {
+            }
         },
         requirejs: {
             dist: {

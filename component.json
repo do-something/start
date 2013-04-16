@@ -23,7 +23,8 @@
     "moment": "1.7.2",
     "mousetrap": "1.2.2",
     "foundation": "3.2.5",
-    "foundation-icons": "latest"
+    "foundation-icons": "latest",
+    "normalize-css": "~2.1.1"
   },
   "devDependencies": {}
 }
