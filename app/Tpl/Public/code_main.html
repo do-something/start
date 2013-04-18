@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Code_main</title>
-    <link rel="stylesheet" href="__ROOT__/styles/code.css">
+    <link rel="stylesheet" href="__APP__/styles/code.css">
 </head>
 <body>
-    <div id="nav">
-        <ul>
-            <li><a href="__URL__/index">index</a></li>
-            <li><a href="__URL__/backbone-vs-jquery">backbone vs jquery</a></li>
-            <li><a href="#">#</a></li>
-        </ul>
+    <div id="wrapper">
+        <div id="nav">
+            <ul class="nav">
+                <li><a href="__URL__/index">index</a></li>
+                <li><a href="__URL__/backbone-vs-jquery">backbone vs jquery</a></li>
+                <li><a href="#">#</a></li>
+            </ul>
+        </div>
+        <div id="bd">
+            <div id="main">
+                <block name="content">code_main.html > block name=content ...</block>
+            </div>
+            <div id="sidebar">
+                <block name="sidebar">
+                   <include file="Public:code_catalog" />
+                </block>
+            </div>
+        </div>
+        <!-- <div id="ft">footer...</div> -->
     </div>
-    <block name="content">code_main content</block>
+    <script src="__APP__/components/requirejs/require.js"></script>
+    <script>
+    require.config({
+        baseUrl: "__APP__/scripts"
+    })
+    </script>
+    <script src="__APP__/scripts/config.js"></script>
+    <script src="__APP__/scripts/code.js"></script>
+    <block name="script"></block>
 </body>
 </html>

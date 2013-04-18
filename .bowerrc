@@ -1,4 +1,4 @@
 {
     "directory": "public/static/components",
-    "json": "bower_component.json"
+    "json": "bower.json"
 }

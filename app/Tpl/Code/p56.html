@@ -1,0 +1,32 @@
+<extend name="Public:code_main" />
+<block name="content">
+    <div class="content">class: content</div>
+    <div>
+        <button id="remove">Rmove</button>
+        <button id="prepend">Add prepend</button>
+        <button id="append">Add append</button>
+        <button id="toggle">Toggle</button>
+    </div>
+</block>
+<block name="script">
+    <script>
+        require(['jquery'], function($){
+            $('#remove').on('click', function(){
+                $('.content').remove();
+            })
+            $('#prepend').on('click', function(){
+                $('#main').prepend(
+                    '<div class="content">class: content</div>'
+                );
+            })
+            $('#append').on('click', function(){
+                $('#main').append(
+                    '<div class="content">class: content</div>'
+                );
+            })
+            $('#toggle').on('click', function(){
+                $('.content').toggle();
+            })
+        })
+    </script>
+</block>

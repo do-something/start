@@ -15,6 +15,7 @@ return array(
     'URL_ROUTER_ON'                     => true,
     'URL_ROUTE_RULES'                   => array(
         'home'                          => 'index/index',
+        'code/page/:page\d'             => 'code/index',
         'jquery/notebook/:id\d'         => 'jquery/notebook',
         'jquery/chapter/:number\d'      => 'jquery/chapter', //规则路由
     ),

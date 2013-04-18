@@ -1,6 +1,51 @@
 // @import "compass/reset"
 @import "normalize"
-@import "compass/layout"
-@import "compass/css3"
+// @import "compass/layout"
+// @import "compass/css3"
 @import "960/grid"
+// @import "960/text"
+// @import "compass_twitter_bootstrap"
+// @import "compass_twitter_bootstrap_awesome"
+// @import "sass-bootstrap/lib/variables"
+// @import "sass-bootstrap/lib/mixins"
+// @import "sass-bootstrap/lib/navbar"
+// @import "sass-bootstrap/lib/navs"
 
+a
+    color: #063FC4
+    text-decoration: none
+
+a:hover
+    text-decoration: underline
+
+.nav
+    padding: 0
+.nav li
+    list-style: none
+    float: left
+    padding: 5px 15px
+.nav li a
+    display: block
+
+#catalog
+    a:visited 
+        color: #583529
+
+$ninesixty-columns: 24
+$ninesixty-grid-width: 1200px
+
+#wrapper
+    +grid-system()
+    #nav
+        +grid(24)
+    #bd
+        +grid(24)
+        #main
+            +grid(17)
+            +alpha
+        #sidebar
+            +grid(6)
+            +grid_prefix(1)
+            +omega
+    #ft
+        +grid(24)
