@@ -97,6 +97,8 @@ module.exports = function(grunt) {
                         name: 'main'
                     }, {
                         name: 'sjm'
+                    }, {
+                        name: 'code'
                     }],
                     logLevel: 0,
                     findNestedDependencies: true,
@@ -266,12 +268,12 @@ module.exports = function(grunt) {
         'copy',
         'usemin']);
 
-    grunt.registerTask('default', [
-        'jshint',
-        'build']);
-
     grunt.registerTask('prepare', [
         'concat:prepare',
         'coffee:watch',
         'compass:watch']);
+
+    grunt.registerTask('default', [
+        'jshint',
+        'build']);
 };
