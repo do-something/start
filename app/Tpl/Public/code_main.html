@@ -26,6 +26,7 @@
         </div>
         <!-- <div id="ft">footer...</div> -->
     </div>
+    <!-- build:js __APP__/scripts/code.js -->
     <script src="__APP__/components/requirejs/require.js"></script>
     <script>
     require.config({
@@ -34,6 +35,13 @@
     </script>
     <script src="__APP__/scripts/config.js"></script>
     <script src="__APP__/scripts/code.js"></script>
+    <!-- endbuild -->
+    <!-- TODO: Tow changes to the config repeated problems -->
+    <script>
+    require.config({
+        baseUrl: "__APP__/scripts"
+    })
+    </script>
     <block name="script"></block>
 </body>
 </html>
