@@ -4,3 +4,4 @@ require ['jquery'], ($)->
         alert 'a:contains("#")'
     $('a[href="#"]').on 'click', ->
         alert 'a[href="#"]'
+
