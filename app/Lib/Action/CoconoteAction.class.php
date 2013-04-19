@@ -8,7 +8,6 @@ class CoconoteAction extends Action{
     }
 
     public function save(){
-        // TODO: 保存数据
         $coconote = M("Coconote");
 
         $data['note'] = $_POST['note'];
