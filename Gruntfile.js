@@ -153,6 +153,7 @@ module.exports = function(grunt) {
                 files: {
                     // '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
                     '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/main.css'],
+                    '<%= meta.distDir %>/styles/do-something.css': ['<%= meta.staticDir %>/styles/do-something.css'],
                     '<%= meta.distDir %>/styles/vendor/ie.css': ['<%= meta.staticDir %>/styles/vendor/ie.css'],
                     '<%= meta.distDir %>/styles/vendor/bootstrap-ie.css': ['<%= meta.staticDir %>/styles/vendor/bootstrap-ie6.min.css'],
                     '<%= meta.distDir %>/styles/code.css': ['<%= meta.staticDir %>/styles/code.css']
