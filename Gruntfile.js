@@ -151,7 +151,11 @@ module.exports = function(grunt) {
         cssmin: {
             dist: {
                 files: {
-                    '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
+                    // '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
+                    '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/main.css'],
+                    '<%= meta.distDir %>/styles/vendor/ie.css': ['<%= meta.staticDir %>/styles/vendor/ie.css'],
+                    '<%= meta.distDir %>/styles/vendor/bootstrap-ie.css': ['<%= meta.staticDir %>/styles/vendor/bootstrap-ie6.min.css'],
+                    '<%= meta.distDir %>/styles/code.css': ['<%= meta.staticDir %>/styles/code.css']
                 }
             }
         },
@@ -189,6 +193,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 files: {
+                    '<%= meta.distDir %>/scripts/code.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/code.js'],
                     '<%= meta.distDir %>/scripts/main.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/main.js'],
                     '<%= meta.distDir %>/scripts/sjm.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/sjm.js']
                 }
@@ -246,6 +251,12 @@ module.exports = function(grunt) {
                         'thinkphp/core/ThinkPHP/**',
                         'thinkphp/core/thinkphp-extend/Extend/Engine/**',
                         'thinkphp/core/thinkphp-extend/Extend/Library/ORG/**']
+                }, {
+                    expand: true,
+                    dot: true,
+                    dest: '<%= meta.distDir %>/scripts/',
+                    cwd: '<%= meta.staticDir %>/scripts/',
+                    src: ['code_p*.js']
                 }]
             }
         }
