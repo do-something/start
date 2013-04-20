@@ -151,6 +151,7 @@ module.exports = function(grunt) {
         cssmin: {
             dist: {
                 files: {
+                    // TODO: style/vendor/ 的模块管理，方法1：compass 模块引用
                     // '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
                     '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/main.css'],
                     '<%= meta.distDir %>/styles/do-something.css': ['<%= meta.staticDir %>/styles/do-something.css'],
