@@ -1,6 +1,20 @@
 <extend name="Public:code_main" />
 <block name="content">
     <h1>clone()</h1>
+    <pre class="prettyprint linenums">
+        (function() {
+
+          define(['jquery'], function() {
+            if (window.console) {
+              console.log('be from code_p58.js');
+            }
+            return $('button#clone').on('click', function() {
+              return $('.clone').append($(this).clone());
+            });
+          });
+
+        }).call(this);
+    </pre>
     <div><button id="clone">clone</button></div>
     <div class="clone">clone</div>
 </block>
