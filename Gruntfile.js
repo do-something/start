@@ -1,23 +1,31 @@
-module.exports = function(grunt) {
-    'use strict';
+// Generated on 2013-03-22 using generator-webapp 0.1.5
+'use strict';
+var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+var mountFolder = function (connect, dir) {
+    return connect.static(require('path').resolve(dir));
+};
 
+// # Globbing
+// for performance reasons we're only matching one level down:
+// 'test/spec/{,*/}*.js'
+// use this if you want to match all subfolders:
+// 'test/spec/**/*.js'
+
+module.exports = function (grunt) {
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+    // configurable paths
+    var yeomanConfig = {
+        app: 'app',
+        dist: '2'
+    };
+
     grunt.initConfig({
-        pkg: "<%= grunt.file.readJSON('package.json') %>",
-        meta: {
-            rootDir: '.',
-            publicDir: 'public',
-            appDir: 'app',
-            distDir: '<%= meta.publicDir %>/dist',
-            staticDir: '<%= meta.publicDir %>/static',
-            tmpDir: '<%= meta.publicDir %>/.tmp',
-            banner: '/*! <%= pkg.name %> - v<%= pkg.version %>'
-        },
+        yeoman: yeomanConfig,
         watch: {
             coffee: {
-                files: ['<%= meta.staticDir %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:watch']
             },
             coffeeTest: {
@@ -25,40 +33,111 @@ module.exports = function(grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%= meta.staticDir %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:watch']
+            },
+            livereload: {
+                files: [
+                    '<%= yeoman.app %>/*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,webp}'
+                ],
+                tasks: ['livereload']
+            }
+        },
+        connect: {
+            options: {
+                port: 9000,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+            livereload: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            lrSnippet,
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, 'app')
+                        ];
+                    }
+                }
+            },
+            test: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, 'test')
+                        ];
+                    }
+                }
+            },
+            dist: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, 'dist')
+                        ];
+                    }
+                }
+            }
+        },
+        open: {
+            server: {
+                path: 'http://localhost:<%= connect.options.port %>'
             }
         },
         clean: {
-            dist: ["<%= meta.distDir %>", "<%= meta.tmpDir %>"],
+            dist: ['.tmp', '<%= yeoman.dist %>/*'],
+            server: '.tmp'
+        },
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+                '!<%= yeoman.app %>/scripts/vendor/*',
+                'test/spec/{,*/}*.js'
+            ]
+        },
+        mocha: {
+            all: {
+                options: {
+                    run: true,
+                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                }
+            }
         },
         coffee: {
-            watch: {
-                files: [{
-                    // rather than compiling multiple files here you should
-                    // require them into your main .coffee file
-                    expand: true,
-                    cwd: '<%= meta.staticDir %>/scripts',
-                    src: '*.coffee',
-                    dest: '<%= meta.staticDir %>/scripts',
-                    ext: '.js'
-                }]
-            },
             dist: {
                 files: [{
                     // rather than compiling multiple files here you should
                     // require them into your main .coffee file
                     expand: true,
-                    cwd: '<%= meta.staticDir %>/scripts',
+                    cwd: '<%= yeoman.app %>/scripts',
                     src: '*.coffee',
-                    dest: '<%= meta.tmpDir %>/scripts',
+                    dest: '.tmp/scripts',
+                    ext: '.js'
+                }]
+            },
+            watch: {
+                files: [{
+                    // rather than compiling multiple files here you should
+                    // require them into your main .coffee file
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/scripts',
+                    src: '*.coffee',
+                    dest: '<%= yeoman.app %>/scripts',
                     ext: '.js'
                 }]
             },
             test: {
                 files: [{
                     expand: true,
-                    cwd: '<%= meta.tmpDir %>/spec',
+                    cwd: '.tmp/spec',
                     src: '*.coffee',
                     dest: 'test/spec'
                 }]
@@ -66,97 +145,89 @@ module.exports = function(grunt) {
         },
         compass: {
             options: {
-                config: 'compass.rb',
-                sassDir: '<%= meta.staticDir %>/styles',
-                // sassDir: ['<%= meta.staticDir %>/styles', '<%= meta.staticDir %>/styles/vendor'],
-                cssDir: '<%= meta.tmpDir %>/styles',
-                imagesDir: '<%= meta.staticDir %>/images',
-                javascriptsDir: '<%= meta.staticDir %>/scripts',
-                fontsDir: '<%= meta.staticDir %>/styles/fonts',
-                importPath: '<%= meta.staticDir %>/components',
+                sassDir: '<%= yeoman.app %>/styles',
+                cssDir: '.tmp/styles',
+                imagesDir: '<%= yeoman.app %>/images',
+                javascriptsDir: '<%= yeoman.app %>/scripts',
+                fontsDir: '<%= yeoman.app %>/styles/fonts',
+                importPath: 'app/components',
                 relativeAssets: true
             },
+            dist: {},
             watch: {
                 options: {
-                    cssDir: '<%= meta.staticDir %>/styles'
+                    cssDir: '<%= yeoman.app %>/styles',
                 }
             },
-            dist: {
+            server: {
+                options: {
+                    debugInfo: true
+                }
             }
         },
+        // not used since Uglify task does concat,
+        // but still available if needed
+        /*concat: {
+            dist: {}
+        },*/
         requirejs: {
             dist: {
+                // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
-                    // appDir: '<%= meta.staticDir %>/scripts',
-                    baseUrl: '<%= meta.staticDir %>/scripts',
-                    optimize: 'uglify',
-                    // optimize: 'none', // for development
-                    dir: '<%= meta.tmpDir %>/scripts',
-                    mainConfigFile: '<%= meta.staticDir %>/scripts/config.js',
-                    modules: [{
-                        name: 'main'
-                    }, {
-                        name: 'sjm'
-                    }, {
-                        name: 'code'
-                    }],
-                    logLevel: 0,
-                    findNestedDependencies: true,
-                    fileExclusionRegExp: /^\./,
-                    inlineText: true,
-                    uglify2: {
-                        // //Example of a specialized config. If you are fine
-                        // //with the default options, no need to specify
-                        // //any of these properties.
-                        // output: {
-                        //     beautify: true
-                        // },
-                        // compress: {
-                        //     sequences: false,
-                        //     global_defs: {
-                        //         DEBUG: false
-                        //     }
-                        // },
-                        // warnings: true,
-                        // mangle: false
-                    }
+                    // `name` and `out` is set by grunt-usemin
+                    baseUrl: 'app/scripts',
+                    optimize: 'none',
+                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
+                    // https://github.com/yeoman/grunt-usemin/issues/30
+                    // generateSourceMaps: true,
+                    // required to support SourceMaps
+                    // http://requirejs.org/docs/errors.html#sourcemapcomments
+                    preserveLicenseComments: false,
+                    useStrict: true,
+                    wrap: true,
+                    // dir: '<%= yeoman.dist %>/scripts',
+                    // mainConfigFile: '<%= yeoman.app %>/scripts/main.js',
+                    // modules: [
+                    //     {name: 'main'},
+                    //     {name: 'sjm'}
+                    // ],
+                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
         },
         useminPrepare: {
             html: [
-                '<%= meta.appDir %>/Tpl/Public/footer.html',
-                '<%= meta.appDir %>/Tpl/Jquery/footer.html'],
+            '<%= yeoman.app %>/index.html',
+            // '<%= yeoman.app %>/thinkphp/Tpl/Jquery/footer.html'
+            ],
             options: {
-                dest: '<%= meta.distDir %>'
+                dest: '<%= yeoman.dist %>'
             }
         },
         usemin: {
-            html: ['<%= meta.distDir %>/{,*/}*.html', '<%= meta.distDir %>/app/Tpl/{,**/}*.html'],
-            css: ['<%= meta.distDir %>/styles/{,*/}*.css'],
+            html: ['<%= yeoman.dist %>/{,*/}*.html', '<%= yeoman.dist %>/thinkphp/Tpl/{,**/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
-                dirs: ['<%= meta.distDir %>']
+                dirs: ['<%= yeoman.dist %>']
             }
         },
         imagemin: {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= meta.staticDir %>/images',
+                    cwd: '<%= yeoman.app %>/images',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= meta.distDir %>/images'
+                    dest: '<%= yeoman.dist %>/images'
                 }]
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    // '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/{,*/}*.css']
-                    '<%= meta.distDir %>/styles/main.css': ['<%= meta.staticDir %>/styles/main.css'],
-                    '<%= meta.distDir %>/styles/do-something.css': ['<%= meta.staticDir %>/styles/do-something.css'],
-                    '<%= meta.distDir %>/styles/vendor/ie.css': ['<%= meta.staticDir %>/styles/vendor/ie.css'],
-                    '<%= meta.distDir %>/styles/vendor/bootstrap-ie.css': ['<%= meta.staticDir %>/styles/vendor/bootstrap-ie6.min.css'],
-                    '<%= meta.distDir %>/styles/code.css': ['<%= meta.staticDir %>/styles/code.css']
+                    '<%= yeoman.dist %>/styles/main.css': [
+                        '.tmp/styles/{,*/}*.css',
+                        '<%= yeoman.app %>/styles/{,*/}*.css'
+                    ]
                 }
             }
         },
@@ -175,62 +246,10 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= meta.staticDir %>',
+                    cwd: '<%= yeoman.app %>',
                     src: '*.html',
-                    dest: '<%= meta.distDir %>'
+                    dest: '<%= yeoman.dist %>'
                 }]
-            }
-        },
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            all: [
-                'Gruntfile.js',
-                '<%= meta.staticDir %>/scripts/{,*/}*.js',
-                '!<%= meta.staticDir %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js']
-        },
-        concat: {
-            dist: {
-                files: {
-                    '<%= meta.distDir %>/scripts/code.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/code.js'],
-                    '<%= meta.distDir %>/scripts/main.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/main.js'],
-                    '<%= meta.distDir %>/scripts/sjm.js': ['<%= meta.tmpDir %>/scripts/vendor/require.js', '<%= meta.tmpDir %>/scripts/sjm.js']
-                }
-            },
-            prepare: {
-                files: {
-                    '<%= meta.staticDir %>/scripts/vendor/bootstrap.js': [
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-affix.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-alert.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-dropdown.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-tooltip.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-modal.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-transition.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-button.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-popover.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-typeahead.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-carousel.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-scrollspy.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-collapse.js',
-                    '<%= meta.staticDir %>/components/sass-bootstrap/js/bootstrap-tab.js'  
-                    ]
-                }
-            }
-        },
-        uglify: {
-            options: {
-                // the banner is inserted at the top of the output
-                // banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    '<%= meta.distDir %>/scripts/vendor/jquery.js': ['<%= meta.staticDir %>/components/jquery/jquery.js'],
-                    '<%= meta.distDir %>/scripts/vendor/modernizr.js': ['<%= meta.staticDir %>/components/modernizr/modernizr.js'],
-                    '<%= meta.distDir %>/scripts/vendor/bootstrap-ie.js': ['<%= meta.staticDir %>/scripts/vendor/bootstrap-ie.js'],
-                    '<%= meta.tmpDir %>/scripts/vendor/require.js': ['<%= meta.staticDir %>/components/requirejs/require.js'],
-                }
             }
         },
         copy: {
@@ -238,54 +257,70 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= meta.staticDir %>',
-                    dest: '<%= meta.distDir %>',
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
                     src: [
-                        '*.{ico,txt,yaml,php}', // html by htmlmin task
-                    '.htaccess']
-                }, {
-                    expand: true,
-                    dot: true,
-                    dest: '<%= meta.distDir %>',
-                    src: [
-                        'app/**',
-                        'thinkphp/core/ThinkPHP/**',
-                        'thinkphp/core/thinkphp-extend/Extend/Engine/**',
-                        'thinkphp/core/thinkphp-extend/Extend/Library/ORG/**']
-                }, {
-                    expand: true,
-                    dot: true,
-                    dest: '<%= meta.distDir %>/scripts/',
-                    cwd: '<%= meta.staticDir %>/scripts/',
-                    src: ['code_p*.js']
+                        '*.{ico,txt,yaml,php}',
+                        '.htaccess',
+                        'thinkphp/{,**/}*.{php,tpl,html}',
+                        'core/**'
+                    ]
                 }]
+            }
+        },
+        bower: {
+            all: {
+                rjsConfig: [
+                    '<%= yeoman.app %>/scripts/main.js'
+                ]
             }
         }
     });
 
     grunt.renameTask('regarde', 'watch');
 
-    grunt.registerTask('build', [
-        'clean:dist',
-        'concat:prepare',
+    grunt.registerTask('server', function (target) {
+        if (target === 'dist') {
+            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+        }
+
+        grunt.task.run([
+            'clean:server',
+            'coffee:dist',
+            'compass:server',
+            'livereload-start',
+            'connect:livereload',
+            'open',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('test', [
+        'clean:server',
         'coffee',
         'compass',
-        // 'useminPrepare',
+        'connect:test',
+        'mocha'
+    ]);
+
+    grunt.registerTask('build', [
+        'clean:dist',
+        'coffee',
+        'compass:dist',
+        'useminPrepare',
         'requirejs',
         'imagemin',
         'htmlmin',
-        'concat:dist',
+        'concat',
         'cssmin',
         'uglify',
         'copy',
-        'usemin']);
-
-    grunt.registerTask('prepare', [
-        'concat:prepare',
-        'coffee:watch',
-        'compass:watch']);
+        'usemin'
+    ]);
 
     grunt.registerTask('default', [
         'jshint',
-        'build']);
+        'test',
+        'build'
+    ]);
 };
