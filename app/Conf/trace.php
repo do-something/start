@@ -7,6 +7,7 @@ return array(
     'APP_NAME'=> APP_NAME,
     '__URL__'=> __URL__,
     '__APP__'=> __APP__,
+    'APP_DEBUG'=> C('APP_DEBUG'),
     'URL_HTML_SUFFIX'=> C('URL_HTML_SUFFIX'),
     'ThinkPHP版本'=>C('THINK_VERSION')
 ); 
