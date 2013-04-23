@@ -1,0 +1,21 @@
+<extend name="public:code_main" />
+<block name="content">
+    <h1>.before() and .after()</h1>
+    <div>
+        <h3 class='before'>before</h3>
+    </div>
+    <div>
+        <h3 class='after'>after</h3>
+    </div>
+    <div><button id="action">action</button></div>
+</block>
+<block name="script">
+    <script>
+        require(['jquery'], function($){
+            $('#action').on('click', function(){
+                $('.before').before("I'm form $('.before').before()");
+                $('.after').after("I'm form $('.after').after()")
+            })
+        })
+    </script>
+</block>

@@ -3,10 +3,12 @@
 .tags_sorted_by_file
 .svn
 .tmp
+*.backup
 
 components
 node_modules
-temp
 runtime
+dist
 2
+
 
