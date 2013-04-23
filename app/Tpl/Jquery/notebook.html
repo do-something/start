@@ -1,0 +1,22 @@
+<extend name="public:jquery_main-12" />
+<block name="content">
+    <strong class="title">notebook</strong><a href="__URL__/edit" class="btn new-note">New Note</a>
+    <table class="table table-hover">
+        <!-- <caption>caption : notebook</caption> -->
+        <thead>
+            <tr>
+                <th>Page</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                        <td>P <a href="__ACTION__/{$vo.id}">{$vo.page_number}</a></td>
+                        <td>{$vo.title}</td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</block>

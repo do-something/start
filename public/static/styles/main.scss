@@ -1,0 +1,14 @@
+$baseBorderRadius:      0px !default;
+$borderRadiusLarge:     0px !default;
+$borderRadiusSmall:     0px !default;
+
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'compass/css3';
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
+
+

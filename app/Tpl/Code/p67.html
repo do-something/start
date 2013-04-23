@@ -1,0 +1,26 @@
+<extend name="public:code_main" />
+<block name="content">
+    <h1>bind()</h1>
+    <pre class="prettyprint linenums">
+
+        (function() {
+          var alertMe;
+
+          define(['jquery'], function($) {
+            return $('button').bind('click', alertMe);
+          });
+
+          alertMe = function() {
+            return alert("hello world");
+          };
+
+        }).call(this);
+
+    </pre>
+    <div><button>button</button></div>
+</block>
+<block name="script">
+    <script>
+        require(['code_p67']);
+    </script>
+</block>
