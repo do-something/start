@@ -14,7 +14,10 @@
     "js-url": "git://github.com/websanova/js-url.git#1.7.5",
     "blankwork": "latest",
     "underscore": "~1.4.3",
-    "backbone": "~0.9.10"
+    "backbone": "~0.9.10",
+    "font-awesome": "~3.0.2",
+    "pie": "~1.0.0",
+    "html5shiv": "~3.6.2"
   },
   "devDependencies": {}
 }
