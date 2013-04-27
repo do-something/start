@@ -1,7 +1,9 @@
+
 // @import compass/reset
 @import normalize
 // @import compass/layout
-// @import compass/css3
+@import compass/css3
+@import compass/css3/pie
 @import 960/grid
 // @import 960/text
 // @import compass_twitter_bootstrap
@@ -14,14 +16,30 @@
 @import code/links
 
 
+$iconSpritePath: "../img/glyphicons-halflings.png"
+$iconWhiteSpritePath: "../img/glyphicons-halflings-white.png"
+@import code/icon
+
+
 .unfolder
     display: none
 
+.btn
+    border: 1px solid #717171
+    background: #F5F5F5
+    +border-radius(3px)
+    cursor: pointer
+    color: #272822
+    padding: 3px 8px
+    +pie
+    & li
+        padding-right: 5px
+    &:hover
+        text-decoration: none
 .toggle
     display: none
-.default
-    display: block
-
+.show-me
+    display: inline
 
 // Grid system
 $ninesixty-columns: 24

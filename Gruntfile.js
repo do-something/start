@@ -8,11 +8,11 @@ module.exports = function(grunt) {
         pkg: "<%= grunt.file.readJSON('package.json') %>",
         meta: {
             rootDir: '.',
-            publicDir: 'public',
+            assetsDir: 'assets',
             appDir: 'app',
-            distDir: '<%= meta.publicDir %>/dist',
-            staticDir: '<%= meta.publicDir %>/static',
-            tmpDir: '<%= meta.publicDir %>/.tmp',
+            distDir: '<%= meta.assetsDir %>/dist',
+            staticDir: '<%= meta.assetsDir %>/static',
+            tmpDir: '<%= meta.assetsDir %>/.tmp',
             banner: '/*! <%= pkg.name %> - v<%= pkg.version %>'
         },
         watch: {
