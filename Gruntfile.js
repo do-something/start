@@ -142,9 +142,14 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= meta.staticDir %>/images',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= meta.distDir %>/images'
+                    cwd: '<%= meta.staticDir %>/img',
+                    src: '{,*/}*.{png,jpg,jpeg,gif}',
+                    dest: '<%= meta.distDir %>/img'
+                },{
+                    expand: true,
+                    cwd: '<%= meta.staticDir %>/upload/images',
+                    src: '{,*/}*.{png,jpg,jpeg,gif}',
+                    dest: '<%= meta.distDir %>/uploadimages'
                 }]
             }
         },
