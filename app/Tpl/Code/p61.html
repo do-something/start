@@ -1,7 +1,14 @@
 <extend name="Public:code_main" />
 <block name="content">
     <h1>event - unload()</h1>
-    <div><a href="http://www.douban.com">douban</a></div>
+    <div>
+        <ul>
+            <li> <a href="http://www.douban.com">douban</a> </li>
+            <li> <a href="javascript:;">javascript:; (ie 下会错误触发重绘事件)</a> </li>
+            <li> <a href="javascript:void(0)">javascript:void(0) (ie 下会错误触发重绘事件)</a> </li>
+            <li> <a href="#none">href="#none" (ie 下使用锚点没问题)</a> </li>
+        </ul>
+    </div>
 </block>
 <block name="script">
     <script>
